@@ -1,0 +1,20 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "SEM4-WWW-TASK1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emilo77/SEM4-WWW-TASK1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emilo77/SEM4-WWW-TASK1/issues"
+  },
+  "homepage": "https://github.com/Emilo77/SEM4-WWW-TASK1#readme"
+}

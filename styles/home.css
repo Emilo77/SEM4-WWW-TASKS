@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+body {
+  background-color: aliceblue;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+nav {
+  background: black;
+}
+nav .nav-container {
+  display: flex;
+  justify-content: space-around;
+}
+nav .nav-container .logo {
+  color: white;
+  padding: 1.2em 2em 0 2em;
+  position: center;
+  width: 60%;
+  height: 60%;
+}
+nav .nav-container ul {
+  display: flex;
+  width: 80em;
+  color: white;
+  justify-content: space-around;
+  font-size: 1.5em;
+  list-style: none;
+}
+nav .nav-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-section {
+  margin: 5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.main-section .column1 {
+  max-width: 60%;
+}
+.main-section .column1 .small-image {
+  min-width: 35%;
+  height: 50%;
+  margin: 2em 2em 2em 0;
+  border-style: double;
+}
+.main-section .column1 .small-section-trip {
+  max-width: 80%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2em;
+}
+.main-section .column1 .small-section-trip .small-section-trip-no-image {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-section .column1 .small-section-trip .small-section-trip-no-image .small-text {
+  margin: 0;
+}
+.main-section .column1 .small-section-trip .small-section-trip-no-image .small-text h1 {
+  font-size: 3em;
+  margin: 0;
+}
+.main-section .column1 .small-section-trip .small-section-trip-no-image .small-text p {
+  font-size: 1.3em;
+}
+.main-section .column1 .small-section-trip .small-section-trip-no-image .rezerwuj-button {
+  margin: 0 0 0 80%;
+}
+.main-section .column1 a {
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-top: 6.5em;
+  margin-bottom: 0;
+  color: blue;
+}
+.main-section .column2 {
+  width: 20%;
+  min-width: 300px;
+}
+.main-section .column2 h2 {
+  font-size: 3em;
+  margin: 0;
+  padding-bottom: 0.6em;
+}
+.main-section .column2 .narrow-column2-context {
+  display: flex;
+  margin: 0;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  flex-direction: column;
+}
+.main-section .column2 .narrow-column2-context h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+.main-section .column2 .narrow-column2-context p {
+  font-size: 1.2em;
+  margin-left: 2em;
+}
+.main-section .column2 .narrow-column2-context a {
+  text-decoration: none;
+  color: #565656;
+  padding: 1em;
+}
+.main-section .column2 .links {
+  display: flex;
+  flex-direction: column;
+}
+.main-section .column2 .links .link {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #000000;
+  background-color: #b4b4b4;
+  padding: 1em 0 1em 0;
+  border-style: dashed;
+}
+.main-section .column2 .links .white {
+  background-color: #efefef;
+  border-style: none;
+}
+
+footer {
+  background: #ffe45f;
+}
+footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+footer .footer-container ul {
+  display: flex;
+  width: 80em;
+  color: #000000;
+  justify-content: space-around;
+  font-size: 1.5em;
+  list-style: none;
+}
+
+/*# sourceMappingURL=home.css.map */
