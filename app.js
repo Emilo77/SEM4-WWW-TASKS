@@ -18,12 +18,11 @@ app.use('/public', express.static('public'))
 
 /* Render Homepage */
 app.get('/', (req, res) => {
-    console.log("weszło")
     res.render('home', {wycieczki:wycieczki})
 })
 
 app.get('/formularz/', (req, res) => {
-    res.render('formularz')
+    res.render('formularz', )
 })
 
 app.get('/strona-testowa/', (req, res) => {
