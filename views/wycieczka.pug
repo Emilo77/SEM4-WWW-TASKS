@@ -1,0 +1,58 @@
+doctype html
+head
+    link(rel='stylesheet' href='../public/styles/wycieczka_style.css')
+    meta(charset='UTF-8')
+    title Wycieczka
+
+include common/navbar.pug
+
+section.first-par
+    div
+        img(src='../public/static/gory.jpg' style='float: left' alt='Gory')
+    h1.main-title Wspaniała wycieczka
+    br
+    p.paragraph-special
+        | To jest opis wycieczki, w którym określone są zalety miejsca, które się odwiedzi.
+        | Ponieważ to tylko przykład, nie ma tu konkretnych informacji.To jest opis wycieczki, w którym określone są zalety miejsca, które się odwiedzi.
+        | Ponieważ to tylko przykład, nie ma tu konkretnych informacji.To jest opis wycieczki, w którym określone są zalety miejsca, które się odwiedzi.
+        | Ponieważ; to tylko przykład, nie ma tu konkretnych informacji.
+    br
+    .text-section
+        h3 Nagłówek z tytułem
+        p
+            | Tu kolejny fragment tekstu. Może się składać z kilku akapitów. W pierwszej wersji
+            | tekst na pewno nie będzie opływał obrazka,
+            | ale tym zajmiemy się później.
+section.second-par
+    .small-text-section
+        h3.header Jeszcze jeden nag&lstrok;&oacute;wek
+        p
+            | To jest opis wycieczki, w którym określone są zalety miejsca, które się odwiedzi.
+            | Ponieważ to tylko przykład, nie ma tu konkretnych informacji.
+    .small-text-section
+        h3 Nagłówek z tytułem
+        p
+            | Tu kolejny fragment tekstu. Może się składać z kilku akapitów. W pierwszej wersji
+            | tekst na pewno nie będzie opływał obrazka,
+            | ale tym zajmiemy się później.
+    .small-text-section
+        h3 I jeszcze kolejny nagłówek
+        p
+            | I kolejne informacje o wycieczce. Trzeba się wysilić i wymyślić własne.
+    .small-text-section
+        h3  Istotne informacje:
+        ul
+            li termin wycieczki: kiedyś w przyszłości
+            li temperatury w miejscu docelowym: takie w sam raz
+            li warto zabrać: trochę ubrań na zmianę
+            li cena wycieczki to: 15002900
+    .small-text-section
+        h3  Program wycieczki:
+        ol
+            li Odwiedziny w miejscu
+            li Obiad
+            li Wyprawa na szczyt wszystkiego
+section.footer
+    .footer-container
+        a.button-3(href='home.html') Powrót
+        a.button-3(href='formularz.html')  Zarezerwuj

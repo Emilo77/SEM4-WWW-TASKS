@@ -1,0 +1,48 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    title Strona główna
+    link(rel='stylesheet' href='../public/styles/home.css')
+
+include common/navbar.pug
+
+section.main-section
+    .column1
+        for wycieczka in wycieczki
+            .small-section-trip
+                img.small-image(src='../public/static/gory.jpg' alt='obrazek' style='width:150px')
+                .small-section-trip-no-image
+                    .small-text
+                        a(href='/wycieczka/')
+                            h1=wycieczka.title
+                        p=wycieczka.body
+                            br
+                        p=wycieczka.price
+                    .rezerwuj-button
+                        a.blue-button(href='/formularz/') Zarezerwuj
+
+
+    .column2
+        h2 Promocje
+        .narrow-column2-context
+            h3 Góry wysokie
+            p
+                | 1-31 lutego
+                a(href='/formularz/') Rezerwuj
+        .narrow-column2-context
+            h3 Inne miejsce
+            p
+                | 17-18 kwietnia
+                a(href='/formularz/') Rezerwuj
+        .narrow-column2-context
+            h3 Też gdzieś
+            p
+                | w listopadzie
+                a(href='/formularz/') Rezerwuj
+        h2 Porady
+        .links
+            a.link(href='https://github.com/Emilo77') Co zabrać na wycieczkę?
+            a.link.white(href='https://github.com/Emilo77') Kiedy najlepiej wyjechać?
+            a.link(href='https://github.com/Emilo77') Jakie buty są najwygodniejsze?
+
+include common/footer.pug

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+nav {
+  background: black;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-around;
+    //padding: 0 5em 0 0;
+
+    .logo {
+      color: white;
+      padding: 1.2em 2em 0 2em;
+      position: center;
+      width: 60%;
+      height: 60%;
+
+    }
+
+    ul {
+      display: flex;
+      width: 80em;
+
+      color: white;
+      justify-content: space-around;
+      font-size: 1.5em;
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+footer {
+  background: #ffe45f;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+    ul {
+      display: flex;
+      width: 80em;
+
+      color: #000000;
+      justify-content: space-around;
+      font-size: 1.5em;
+      list-style: none;
+
+      li {
+
+      }
+    }
+  }
+}
+

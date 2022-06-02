@@ -1,0 +1,67 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    title Formularz rezerwacji
+    link(rel='stylesheet' href='../public/styles/formularz.css')
+    script(src='../scripts.js' defer='')
+
+include common/navbar.pug
+
+.form_and_array
+    .form
+        form#form
+            label(for='wycieczka') Wybierz wycieczkę:
+            br
+            select#wycieczka(name='wycieczka')
+                option(value='szczyt') Szczyt wszystkiego
+                option(value='morza') Dalekie morza
+                option(value='miasto') Miasto
+            br
+            .form_title
+                label(for='name') Imię:
+                br
+                input#name(type='text')
+                br
+                #name-error
+            .form_title
+                label(for='surname') Nazwisko:
+                br
+                input#surname(type='text')
+                br
+                #surname-error
+            .form_title
+                label(for='email') Adres email:
+                br
+                input#email(type='email')
+                br
+            .form_title
+                label(for='start-date') Data
+                br
+                input#start-date(type='date')
+                br
+            input#submit-button.submit-button(type='submit' value='Prześlij')
+    .table
+        h2 Koszty wycieczki
+        table.tg
+            thead
+                tr
+                    th.tg-0lax
+                        b Nazwa kosztu
+                    th.tg-0lax
+                        b Cena
+            tbody
+                tr
+                    td.tg-0lax Szczyt wszystkiego
+                    td.tg-0lax 3432413412 zł
+                tr
+                    td.tg-0lax Dalekie morza
+                    td.tg-0lax 1 zł
+                tr
+                    td.tg-0lax Miasto
+                    td.tg-0lax 233 zł
+#modal.modal
+    .modal-content
+        p#modal-text.modal-text
+        button#modal-button.modal-button OK
+
+include common/footer.pug

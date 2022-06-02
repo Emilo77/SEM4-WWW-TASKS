@@ -1,23 +1,28 @@
+const wycieczki = require('./data.js')
 const express = require('express')
-const path    = require("path");
+const path = require('path');
 const app = express()
-const port = 8080
+const port = 8081
 
+/* Load views engine*/
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(express.static('html'))
+/* Include 'public' directory */
+app.use(express.static('views'))
 app.use('/public', express.static('public'))
 
+/* Render Homepage */
 app.get('/', (req, res) => {
-    res.sendFile((path.join(__dirname + '/html/home.html')))
+    res.render('home', wycieczki)
 })
 
 app.get('/wycieczka/', (req, res) => {
-    res.sendFile((path.join(__dirname + '/html/wycieczka.html')))
+    res.render('wycieczka')
 })
 
 app.get('/formularz/', (req, res) => {
-    res.sendFile((path.join(__dirname + '/html/formularz.html')))
+    res.render('formularz')
 })
 
 app.get('/strona-testowa/', (req, res) => {
@@ -49,7 +54,13 @@ app.get('/wycieczka-:q?nr=:n?&tydzien=:t?', (req, res) => {
         res.send('Nie podano tygodnia wycieczki!')
 
     } else {
-        res.send('Wycieczka ' + name + ' nr ' + number + ' w tygodniu ' + week_number)
+        let num = parseInt(number);
+
+        res.render('wycieczka', {
+            num,
+            wycieczki
+        })
+
     }
 
     // let week_numer = req.params['week_number'];
