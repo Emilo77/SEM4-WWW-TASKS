@@ -75,10 +75,16 @@ nav {
 
         .small-text {
           margin: 0;
+          text-decoration: none;
 
           h1 {
             font-size: 3em;
             margin: 0;
+            color: black;
+          }
+
+          a {
+            text-decoration: none;
           }
 
           p {
@@ -96,7 +102,7 @@ nav {
     }
 
 
-    a {
+    .blue-button {
       font-size: 1.5em;
 
       text-decoration: none;

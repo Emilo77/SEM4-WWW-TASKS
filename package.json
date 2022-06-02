@@ -4,6 +4,7 @@
   "description": "SEM4-WWW-TASK1",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/Emilo77/SEM4-WWW-TASK1/issues"
   },
-  "homepage": "https://github.com/Emilo77/SEM4-WWW-TASK1#readme"
+  "homepage": "https://github.com/Emilo77/SEM4-WWW-TASK1#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
