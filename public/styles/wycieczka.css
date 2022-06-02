@@ -17,9 +17,9 @@ body {
 }
 .first-par img {
   float: right;
-  padding: 0 2em 0 2em;
+  padding: 0 2em 2em 2em;
   height: auto;
-  width: 500px;
+  width: 700px;
 }
 .first-par .main-img-col1 {
   max-width: 100%;
@@ -45,6 +45,7 @@ body {
   color: var(--color-grey);
 }
 .first-par .text-section {
+  margin: 0.5em 0 0.5em 0;
   flex-direction: column;
   width: 80%;
   max-width: 600px;
@@ -166,4 +167,4 @@ ul {
   justify-content: space-between;
 }
 
-/*# sourceMappingURL=wycieczka_style.css.map */
+/*# sourceMappingURL=wycieczka.css.map */

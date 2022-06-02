@@ -16,9 +16,9 @@ body {
 
   img {
     float: right;
-    padding: 0 2em 0 2em;
+    padding: 0 2em 2em 2em;
     height: auto;
-    width: 500px;
+    width: 700px;
   }
 
 
@@ -48,6 +48,7 @@ body {
   }
 
   p {
+
     font-size: x-large;
     font-family: 'Lato', sans-serif;
     color: var(--color-grey);
@@ -55,6 +56,7 @@ body {
   }
 
   .text-section {
+    margin: 0.5em 0 0.5em 0;
     flex-direction: column;
     width: 80%;
     max-width: 600px;
