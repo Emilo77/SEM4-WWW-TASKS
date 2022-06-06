@@ -10,7 +10,7 @@ section.main-section
     .column1
         for wycieczka in wycieczki.array
             .small-section-trip
-                img.small-image(src='../public/static/' + wycieczka.image alt='obrazek' style='width:150px')
+                img.small-image(src='../public/static/' + wycieczka.image style='width:150px')
                 .small-section-trip-no-image
                     .small-text
                         a(href='/wycieczka/' + wycieczka.id)
@@ -40,8 +40,8 @@ section.main-section
                 a(href='/formularz/') Rezerwuj
         h2 Porady
         .links
-            a.link(href='https://github.com/Emilo77') Co zabrać na wycieczkę?
-            a.link.white(href='https://github.com/Emilo77') Kiedy najlepiej wyjechać?
-            a.link(href='https://github.com/Emilo77') Jakie buty są najwygodniejsze?
+            a.link(href='/#') Co zabrać na wycieczkę?
+            a.link.white(href='/#') Kiedy najlepiej wyjechać?
+            a.link(href='/#') Jakie buty są najwygodniejsze?
 
 include common/footer.pug
