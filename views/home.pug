@@ -8,16 +8,16 @@ include common/navbar.pug
 
 section.main-section
     .column1
-        for wycieczka in wycieczki.array
+        for wycieczka in wycieczki
             .small-section-trip
-                img.small-image(src='../public/static/' + wycieczka.image style='width:150px')
+                img.small-image(src='../public/static/' + wycieczka.obrazek style='width:150px')
                 .small-section-trip-no-image
                     .small-text
                         a(href='/wycieczka/' + wycieczka.id)
-                            h1=wycieczka.title
-                        p=wycieczka.body
+                            h1=wycieczka.nazwa
+                        p=wycieczka.krotki_opis
                             br
-                        p= 'Cena: ' + wycieczka.price
+                        p= 'Cena: ' + wycieczka.cena
                     .rezerwuj-button
                         a.blue-button(href='/formularz/') Zarezerwuj
 

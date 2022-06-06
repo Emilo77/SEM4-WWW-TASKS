@@ -9,7 +9,7 @@ nav
                 a(href='/')
                     | Strona główna
             li
-                a(href='/wycieczka/' + Math.floor(Math.random() * 3).toString())
+                a(href='/wycieczka/' + (Math.floor(Math.random() * 3) + 1).toString())
                     // W następnych zadaniach dokonam zmiany na liczbę wycieczek z bazy danych.
                     | Losowa wycieczka
             li

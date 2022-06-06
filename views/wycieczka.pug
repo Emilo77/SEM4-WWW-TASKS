@@ -7,23 +7,23 @@ head
 
 include common/navbar.pug
 
--let image_path = '/../public/static/' + (wycieczka ? wycieczka.image : '')
+-let image_path = '/../public/static/' + (wycieczka ? wycieczka.obrazek : '')
 
 
 section.first-par
     div
-        img(src=image_path style='float: left' alt='Gory')
-    h1.main-title #{wycieczka.title}
+        img(src=image_path style='float: left' alt='Obrazek')
+    h1.main-title #{wycieczka.nazwa}
     h3 #{tydzien ? 'Tydzień ' + tydzien : ''}
 
     br
     p.paragraph-special
-        | #{wycieczka.long_descripion}
+        | #{wycieczka.opis}
     br
     .text-section
 
-    h3 #{wycieczka.title_2}
-    p #{wycieczka.body}
+    h3 #{wycieczka.nazwa}
+    p #{wycieczka.krotki_opis}
 section.second-par
 
     .small-text-section
@@ -31,29 +31,22 @@ section.second-par
         p
             | To jest opis wycieczki, w którym określone są zalety miejsca, które się odwiedzi.
             | Ponieważ to tylko przykład, nie ma tu konkretnych informacji.
-    .small-text-section
-        h3 Nagłówek z tytułem
-        p
-            | Tu kolejny fragment tekstu. Może się składać z kilku akapitów. W pierwszej wersji
-            | tekst na pewno nie będzie opływał obrazka,
-            | ale tym zajmiemy się później.
-    .small-text-section
-        h3 I jeszcze kolejny nagłówek
-        p
-            | I kolejne informacje o wycieczce. Trzeba się wysilić i wymyślić własne.
+
     .small-text-section
         h3  Istotne informacje:
         ul
-            li termin wycieczki: kiedyś w przyszłości
+            li data rozpoczęcia: #{new Date(wycieczka.data_poczatku).toLocaleDateString()}
+            li data zakończenia: #{new Date(wycieczka.data_konca).toLocaleDateString()}
             li temperatury w miejscu docelowym: takie w sam raz
             li warto zabrać: trochę ubrań na zmianę
-            li cena wycieczki to: #{wycieczka.price} zł
+            li cena wycieczki to: #{wycieczka.cena} zł
+            li wolne miejsca: #{wycieczka.liczba_dostepnych_miejsc}
     .small-text-section
         h3  Program wycieczki:
         ol
             li Odwiedziny w miejscu
             li Obiad
-            li Wyprawa na szczyt wszystkiego
+            li Wyprawa
 section.footer
     .footer-container
         a.button-3(href='/') Powrót

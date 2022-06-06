@@ -1,8 +1,20 @@
 let wycieczki = require('./data.js')
 const express = require('express')
 const path = require('path');
-const app = express()
-const port = 8080
+const app = express();
+const port = 8081;
+const {database, Wycieczka, Zgloszenie} = require('./database/models.mjs');
+
+//import functions from database_script.mjs
+const {init_database, get_future_trips, get_trip} = require('./database/database_script.mjs');
+
+init_database().then(
+    () => {
+        console.log("Database initialized!");
+    }, (err) => {
+        console.log("Error: " + err);
+    }
+)
 
 /* Load views engine*/
 app.set('views', path.join(__dirname, 'views'));
@@ -17,11 +29,19 @@ app.use('/public', express.static('public'))
 
 /* Render Homepage */
 app.get('/', (req, res) => {
-    res.render('home', {wycieczki:wycieczki})
+    get_future_trips().then(
+        wycieczki => {
+            console.log(wycieczki);
+            res.render('home', {
+                wycieczki: wycieczki
+            })
+        }, (err) => {
+            console.log(err);
+        });
 })
 
 app.get('/formularz/', (req, res) => {
-    res.render('formularz', )
+    res.render('formularz',)
 })
 
 app.get('/strona-testowa/', (req, res) => {
@@ -33,15 +53,18 @@ app.get('/wycieczka/', (req, res) => {
 })
 
 app.get('/wycieczka/:n/', (req, res) => {
-    let number = parseInt(req.params['n']);
-    if (number >= 0 && number < wycieczki.array.length) {
-        let wycieczka = wycieczki.array[number];
-        res.render('wycieczka', {
-            wycieczka: wycieczka
-        })
-    } else {
-        res.render('404')
-    }
+    get_trip(parseInt(req.params['n'])).then(
+        wycieczka => {
+            if (wycieczka !== undefined) {
+                res.render('wycieczka', {
+                    wycieczka: wycieczka
+                })
+            } else {
+                res.render('404')
+            }
+        }, (err) => {
+            console.log(err);
+        });
 })
 
 app.get('/wycieczka/:n/tydzien/:w', (req, res) => {

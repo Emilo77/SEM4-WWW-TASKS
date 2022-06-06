@@ -1,15 +1,16 @@
-import {Sequelize, DataTypes} from 'sequelize';
+const {Sequelize, DataTypes} = require('sequelize');
+
 
 // Połączenie z bazą danych - lepiej użyć Postgresa (zadanie 0, patrz również niżej)
 // Czy to może skończyć się błędem?
 
-const database = new Sequelize('database', 'username', 'password', {
+const models = new Sequelize('postgres', 'postgres', 'postgres', {
     host: 'localhost',
     dialect: 'postgres'
 });
 
 // Zadanie 1
-const Wycieczka = database.define('Wycieczka', {
+const Wycieczka = models.define('Wycieczka', {
     nazwa: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -24,13 +25,15 @@ const Wycieczka = database.define('Wycieczka', {
         allowNull: false
     },
     obrazek: {
-        type: DataTypes.STRING, //do zmiany,
+        type: DataTypes.TEXT, //do zmiany,
         allowNull: true
     },
     cena: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
-        min: 0
+        validate: {
+            min: 0
+        }
     },
     data_poczatku: {
         type: DataTypes.DATE,
@@ -40,9 +43,7 @@ const Wycieczka = database.define('Wycieczka', {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
-            isAfter: {
-                args: ['data_poczatku'],
-            }
+            // isAfter: new Date(this.data_poczatku).toDateString(),
         }
     },
     liczba_dostepnych_miejsc: {
@@ -51,10 +52,8 @@ const Wycieczka = database.define('Wycieczka', {
     },
 });
 
-//tutaj powinien być ten moduł???
-
 // Zadanie 2
-const Zgloszenie = database.define('Zgloszenie', {
+const Zgloszenie = models.define('Zgloszenie', {
     imie: {
         type: DataTypes.TEXT,
         allowNull: false
@@ -65,20 +64,26 @@ const Zgloszenie = database.define('Zgloszenie', {
     },
     email: {
         type: DataTypes.TEXT,
-        isEmail: true,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isEmail: true,
+        }
     },
     liczba_miejsc: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        min: 1
+        validate: {
+            min: 1
+        }
     },
 });
 
 // Zadanie 3
 // Tu dodaj kod odpowiedzialny za utworzenie relacji pomiędzy modelami db.Wycieczka i db.Zgloszenie
 
-Wycieczka.hasMany(Zgloszenie);
+Zgloszenie.belongsTo(Wycieczka, {
+    foreignKey: 'wycieczka_id',
+});
 
 // Zadania 4-6 w innych plikach
 
@@ -88,15 +93,22 @@ Wycieczka.hasMany(Zgloszenie);
 try {
     // Sprawdzenie poprawności połączenia (authenticate; co się dzieje, gdy błąd?)
     console.log('Nawiązuję połączenie z bazą...');
-    await database.authenticate();
-    console.log('Udało się.');
+    models.authenticate().then(() => {
+        console.log('Udało się.');
+    }, (err) => {
+        console.log('Błąd połączenia:', err);
+    });
+
 
     console.log('Synchronizuję modele z zawartością bazy...');
-    await database.sync({ alter: true });
-    console.log('Udało się.');
+    models.sync({alter: true}).then(() => {
+        console.log('Udało się.');
+    }, (err) => {
+        console.log('Błąd synchronizacji:', err);
+    });
 
 } catch (err) {
     console.error('Nie udało się. Error: ', err);
 }
 
-export {database, Wycieczka, Zgloszenie};
+module.exports = {database: models, Wycieczka, Zgloszenie};
