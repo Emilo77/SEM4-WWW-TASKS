@@ -14,20 +14,24 @@ include common/navbar.pug
             br
             .form_title
                 label(for='imie') Imię:
-                input#imie(type='text')
+                input#imie(type='text' placeholder='Podaj imię')
                 #name-error
             .form_title
                 label(for='nazwisko') Nazwisko:
-                input#nazwisko(type='text')
+                input#nazwisko(type='text' placeholder='Podaj nazwisko')
                 #surname-error
             .form_title
                 label(for='email') Adres email:
-                input#email(type='email')
+                input#email(type='email' placeholder='Podaj adres email')
             .form_title
                 label(for='numer') Liczba zgłoszeń:
                 output 0
-                input#numer(type='range' min='0' max=wycieczka.liczba_dostepnych_miejsc value='7' step='1' oninput='this.previousElementSibling.value = this.value')
-            input#submit-button.submit-button(type='submit' value='Prześlij')
+                input#numer(type='range' min='0' max=wycieczka.liczba_dostepnych_miejsc value='0' step='1' oninput='this.previousElementSibling.value = this.value')
+            if (wycieczka.liczba_dostepnych_miejsc > 0)
+                input#submit-button.submit-button(type='submit' value='Prześlij')
+            else
+                p.submit-button.error_message_hidden Przykro nam, wszystkie miejsca na wycieczkę zostały już zarezerwowane.
+                p.submit-button(type='submit' value='Prześlij' disabled='')
     .table
         h2 #{wycieczka.nazwa}
         table.tg

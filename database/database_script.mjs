@@ -12,7 +12,7 @@ async function init_database() {
         cena: 15002900,
         data_poczatku: "2022-09-01",
         data_konca: "2022-09-05",
-        liczba_dostepnych_miejsc: 25,
+        liczba_dostepnych_miejsc: 0,
         promocja: 0,
         opis: "Po kawce w Gościńcu Równica mieliśmy znów sporo energii aby pokonywać kolejne kilometry." +
             " Szlak dalej był już dość łagodny, z delikatnymi zejściami i podejściami. " +

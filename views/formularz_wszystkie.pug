@@ -13,32 +13,24 @@ include common/navbar.pug
             label(for='nazwa') Wybierz wycieczkę:
             br
             select#nazwa(name='wycieczka')
-                option(value='szczyt') Szczyt wszystkiego
-                option(value='morza') Dalekie morza
-                option(value='miasto') Miasto
+                for wycieczka in wycieczki
+                    option(value=wycieczka.id) #{wycieczka.nazwa}
             br
             .form_title
                 label(for='imie') Imię:
-                br
                 input#imie(type='text')
-                br
                 #name-error
             .form_title
                 label(for='nazwisko') Nazwisko:
-                br
                 input#nazwisko(type='text')
-                br
                 #surname-error
             .form_title
                 label(for='email') Adres email:
-                br
                 input#email(type='email')
-                br
             .form_title
                 label(for='numer') Liczba zgłoszeń:
-                br
-                input#numer(type='integer')
-                br
+                output 0
+                input#numer(type='range' min='0' max=x value='7' step='1' oninput='this.previousElementSibling.value = this.value')
             input#submit-button.submit-button(type='submit' value='Prześlij')
     .table
         h2 Wycieczki
