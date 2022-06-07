@@ -9,43 +9,53 @@ include common/navbar.pug
 
 .form_and_array
     .form
-        h1 Zarezerwuj wycieczkę
         form#form(action='/formularz/', method='POST')
+            label(for='nazwa') Wybierz wycieczkę:
+            br
+            select#nazwa(name='wycieczka')
+                option(value='szczyt') Szczyt wszystkiego
+                option(value='morza') Dalekie morza
+                option(value='miasto') Miasto
             br
             .form_title
                 label(for='imie') Imię:
+                br
                 input#imie(type='text')
+                br
                 #name-error
             .form_title
                 label(for='nazwisko') Nazwisko:
+                br
                 input#nazwisko(type='text')
+                br
                 #surname-error
             .form_title
                 label(for='email') Adres email:
+                br
                 input#email(type='email')
+                br
             .form_title
                 label(for='numer') Liczba zgłoszeń:
-                output 0
-                input#numer(type='range' min='0' max=wycieczka.liczba_dostepnych_miejsc value='7' step='1' oninput='this.previousElementSibling.value = this.value')
+                br
+                input#numer(type='integer')
+                br
             input#submit-button.submit-button(type='submit' value='Prześlij')
     .table
-        h2 #{wycieczka.nazwa}
+        h2 Wycieczki
         table.tg
             thead
                 tr
                     th.tg-0lax
-                        b Start
+                        b Nazwa wycieczki
                     th.tg-0lax
-                        b Koniec
-                    th.tg-0lax
-                        b Cena za osobę
+                        b Cena
                     th.tg-0lax
                         b Dostępne miejsca
 
             tbody
+            for wycieczka in wycieczki
                 tr
-                    td.tg-0lax=new Date(wycieczka.data_poczatku).toLocaleDateString()
-                    td.tg-0lax=new Date(wycieczka.data_konca).toLocaleDateString()
+                    td.tg-0lax=wycieczka.nazwa
                     td.tg-0lax=wycieczka.cena
                     td.tg-0lax=wycieczka.liczba_dostepnych_miejsc
 

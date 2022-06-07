@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 3%;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,20 +31,26 @@ body {
   font-size: 1em;
   font-weight: bold;
   margin: 10px;
-  padding: 25px;
+  padding: 10px;
 }
 .form_and_array .form label {
   font-size: 1.5em;
   font-weight: bold;
-  margin: 20px;
+  margin: 10px 20px 10px 20px;
+}
+.form_and_array .form output {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
 }
 .form_and_array .form input {
+  font-size: 1.5em;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   border: 1px solid #ccc;
-  padding: 7%;
-  margin: 10px;
+  margin: 15px;
+  padding: 1% 0 1% 0;
 }
 .form_and_array .form select {
   width: 100%;
@@ -56,7 +62,7 @@ body {
   margin: 10px;
 }
 .form_and_array .form .submit-button {
-  height: 7%;
+  height: 10%;
   font-size: 1.5em;
 }
 .form_and_array .form .form_error {

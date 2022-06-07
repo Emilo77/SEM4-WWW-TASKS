@@ -50,6 +50,14 @@ const Wycieczka = models.define('Wycieczka', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    promocja: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        validate: {
+            min: 0,
+            max: 100
+        }
+    }
 });
 
 // Zadanie 2

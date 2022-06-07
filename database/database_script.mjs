@@ -13,6 +13,7 @@ async function init_database() {
         data_poczatku: "2022-09-01",
         data_konca: "2022-09-05",
         liczba_dostepnych_miejsc: 25,
+        promocja: 0,
         opis: "Po kawce w Gościńcu Równica mieliśmy znów sporo energii aby pokonywać kolejne kilometry." +
             " Szlak dalej był już dość łagodny, z delikatnymi zejściami i podejściami. " +
             "Taka wędrówka w spokojnym tempie sprzyjała towarzyskim rozmowom ze znajomymi, " +
@@ -40,6 +41,7 @@ async function init_database() {
         data_poczatku: '2022-10-01',
         data_konca: '2022-08-05',
         liczba_dostepnych_miejsc: 23,
+        promocja: 25,
         opis: 'Basowy huk fal, stada rozkrzyczanych mew szybujących nad wypływającym w morze statkiem, ' +
             'tętniące życiem porty … Puste plaże bezlitośnie smagane ostrym, północno-zachodnim wiatrem, ' +
             'ukryte w pachnąco-sosnowych lasach latarnie morskie, niepowtarzalność ' +
@@ -83,7 +85,6 @@ async function init_database() {
         nazwisko: 'Kowalski',
         email: 'essa@gmail.com',
         liczba_miejsc: 2,
-        wycieczkaId: wycieczka_gory.id,
     });
 
     await Zgloszenie.create({
@@ -91,7 +92,6 @@ async function init_database() {
         nazwisko: 'Nowak',
         email: 'essa2@gmail.com',
         liczba_miejsc: 3,
-        wycieczkaId: wycieczka_gory.id,
     });
 }
 

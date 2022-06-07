@@ -10,6 +10,9 @@ document.querySelector('#submit-button').addEventListener("click",
         let surname_input = document.querySelector("#surname");
         let name_error = document.querySelector("#name-error");
         let surname_error = document.querySelector("#surname-error");
+        let email_input = document.querySelector("#email");
+        let email_error = document.querySelector("#email-error");
+        let number_input = document.querySelector("#number");
         let modal = document.querySelector("#modal");
         let modal_text = document.querySelector("#modal-text");
         let modal_button = document.querySelector("#modal-button")
@@ -26,6 +29,13 @@ document.querySelector('#submit-button').addEventListener("click",
             surname_input.style.backgroundColor = "pink";
             surname_input.style.borderColor = "red";
             surname_error.innerHTML = "Wpisz poprawne nazwisko."
+        }
+
+        if (email_input.value.length === 0 || email_input.value.length > 40) {
+            wrong = true;
+            email_input.style.backgroundColor = "pink";
+            email_input.style.borderColor = "red";
+            email_error.innerHTML = "Wpisz poprawny email."
         }
 
         if (wrong)

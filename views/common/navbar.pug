@@ -6,12 +6,12 @@ nav
             img.logo(href='/' src='/../public/static/logo.png' alt='logo' style='width:150px')
         ul
             li
-                a(href='/')
+                a(href='/' style='color:' + (nav_color === 'homepage' ? '#f14646' : '#ffffff'))
                     | Strona główna
             li
-                a(href='/wycieczka/' + (Math.floor(Math.random() * 3) + 1).toString())
-                    // W następnych zadaniach dokonam zmiany na liczbę wycieczek z bazy danych.
+                a(href='/wycieczka/' + (Math.floor(Math.random() * 3) + 1).toString()
+                    style='color:' + (nav_color === 'wycieczka' ? '#f14646' : '#ffffff'))
                     | Losowa wycieczka
             li
-                a(href='/formularz/')
+                a(href='/formularz/' style='color:' + (nav_color === 'formularz' ? '#f14646' : '#ffffff'))
                     | Rezerwacja

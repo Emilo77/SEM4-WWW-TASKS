@@ -17,27 +17,21 @@ section.main-section
                             h1=wycieczka.nazwa
                         p=wycieczka.krotki_opis
                             br
+                        p= 'Dostępne miejsca: ' + wycieczka.liczba_dostepnych_miejsc
                         p= 'Cena: ' + wycieczka.cena
                     .rezerwuj-button
-                        a.blue-button(href='/formularz/') Zarezerwuj
+                        a.blue-button(href='/formularz/' + wycieczka.id) Zarezerwuj
 
     .column2
         h2 Promocje
-        .narrow-column2-context
-            h3 Góry wysokie
-            p
-                | 1-31 lutego
-                a(href='/formularz/') Rezerwuj
-        .narrow-column2-context
-            h3 Inne miejsce
-            p
-                | 17-18 kwietnia
-                a(href='/formularz/') Rezerwuj
-        .narrow-column2-context
-            h3 Też gdzieś
-            p
-                | w listopadzie
-                a(href='/formularz/') Rezerwuj
+
+        for wycieczka in wycieczki
+            .narrow-column2-context
+                h3=wycieczka.nazwa
+                p
+                    | - #{wycieczka.promocja} %
+                    a(href='/formularz/' + wycieczka.id) Rezerwuj
+
         h2 Porady
         .links
             a.link(href='/#') Co zabrać na wycieczkę?
