@@ -7,12 +7,12 @@ const router = express.Router();
 const nav_color = 'formularz';
 
 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
     get_future_trips().then(
         wycieczki => {
-            res.render('formularz_wszystkie', {
+            res.render('formularz/formularz_wszystkie', {
                 nav_color,
-                wycieczki: wycieczki
+                wycieczki,
             })
         }, (err) => {
             res.render('404', {
@@ -61,14 +61,11 @@ router.post('/:n/success',
         let liczba_miejsc = req.body.liczba_miejsc;
         let wycieczka_id = parseInt(req.params['n']);
 
-        console.log(imie, nazwisko, email, liczba_miejsc, wycieczka_id);
-
         change_tickets(wycieczka_id, liczba_miejsc).then(() => {
             },
             (err) => {
                 console.log(err.message);
-                return res.render('404', {
-                    message_status: '400',
+                return res.render('formularz/formularz_error', {
                     message: err.toLocaleString(),
                 });
             });

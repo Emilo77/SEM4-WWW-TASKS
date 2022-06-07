@@ -31,7 +31,9 @@ include ../common/navbar
                 label(for='numer') Liczba zgłoszeń:
                 output 0
                 input#numer(type='range' min='0' max=x value='7' step='1' oninput='this.previousElementSibling.value = this.value')
-            input#submit-button.submit-button(type='submit' value='Prześlij')
+            //input#submit-button.submit-button(type='submit' value='Prześlij')
+            p.submit-button.error_message_hidden Tutaj będzie formularz dla wszystkich wycieczek
+
     .table
         h2 Wycieczki
         table.tg
