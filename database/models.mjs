@@ -25,7 +25,7 @@ const Wycieczka = models.define('Wycieczka', {
         allowNull: false
     },
     obrazek: {
-        type: DataTypes.TEXT, //do zmiany,
+        type: DataTypes.TEXT,
         allowNull: true
     },
     cena: {

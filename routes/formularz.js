@@ -1,5 +1,5 @@
 const express = require('express');
-const {get_future_trips, get_trip} = require("../database/database_script.mjs");
+const {get_future_trips, get_trip, change_tickets} = require("../database/database_script.mjs");
 const {Zgloszenie} = require("../database/models.mjs");
 const bodyParser = require("body-parser");
 const {body, validationResult} = require("express-validator");
@@ -15,7 +15,10 @@ router.get('/', (req, res) => {
                 wycieczki: wycieczki
             })
         }, (err) => {
-            res.render('404');
+            res.render('404', {
+                message_status: '404',
+                message: 'Nie znaleziono wycieczek'
+            });
             console.log(err);
         });
 })
@@ -28,7 +31,11 @@ router.get('/:n', (req, res) => {
                 wycieczka: wycieczka,
             })
         }, (err) => {
-            res.render('404');
+            res.render('404', {
+                message_status: '404',
+                message: 'Nie znaleziono wycieczki'
+            });
+
             console.log(err);
         });
 })
@@ -54,22 +61,34 @@ router.post('/:n/success',
 
         console.log(imie, nazwisko, email, liczba_miejsc, wycieczka_id);
 
+        change_tickets(wycieczka_id, liczba_miejsc).then(() => {
+            },
+            (err) => {
+                console.log(err.message);
+                return res.render('404', {
+                    message_status: '400',
+                    message: err.toLocaleString(),
+                });
+            });
 
         Zgloszenie.create({
-            imie: imie,
-            nazwisko: nazwisko,
-            email: email,
-            liczba_miejsc: liczba_miejsc,
-            wycieczka_id: wycieczka_id
-        }).then(zgloszenie => {
-            res.render('formularz_success', zgloszenie);
-
+            imie,
+            nazwisko,
+            email,
+            liczba_miejsc,
+            wycieczka_id,
+        }).then(wycieczka => {
+            res.render('formularz_success', {
+                nav_color,
+                wycieczka: wycieczka,
+            })
         }, (err) => {
-            res.render('404');
-            console.log(err);
+            console.log(err.message);
+            return res.render('404', {
+                message_status: '400',
+                message: err.toLocaleString(),
+            });
         });
-
-
-    })
+    });
 
 module.exports = router;

@@ -5,6 +5,13 @@ head
     link(rel='stylesheet' href='/../public/styles/404.css')
 
 body
-    h1 404
+    if (message_status)
+        h1 #{message_status}
+    else
+        h1 404
+    if (message)
+        p #{message}
+    else
+        p Sorry, the page you are looking for could not be found.
 
 

@@ -121,6 +121,21 @@ async function get_trip(number) {
     }
 }
 
-module.exports = {init_database, get_future_trips, get_trip};
+async function change_tickets(trip_id, number_of_tickets) {
+    const trip = await get_trip(trip_id);
+    if (trip === undefined) {
+        throw new Error('Trip not found');
+    }
+
+    if (trip.liczba_dostepnych_miejsc - number_of_tickets < 0) {
+        throw new Error('Not enough tickets');
+    } else {
+        trip.liczba_dostepnych_miejsc -= number_of_tickets;
+        await trip.save();
+    }
+
+}
+
+module.exports = {init_database, get_future_trips, get_trip, change_tickets};
 
 
