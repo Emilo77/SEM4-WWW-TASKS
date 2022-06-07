@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 router.get('/:n', (req, res) => {
     get_trip(parseInt(req.params['n'])).then(
         wycieczka => {
-            res.render('formularz', {
+            res.render('formularz/formularz', {
                 nav_color,
                 wycieczka: wycieczka,
             })
@@ -50,7 +50,9 @@ router.post('/:n/success',
 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).send(errors.array()[0].msg);
+            return res.render('formularz/formularz_error', {
+                message: errors.array()[0].msg,
+            });
         }
 
         let imie = req.body.imie;
@@ -78,7 +80,7 @@ router.post('/:n/success',
             liczba_miejsc,
             wycieczka_id,
         }).then(wycieczka => {
-            res.render('formularz_success', {
+            res.render('formularz/formularz_success', {
                 nav_color,
                 wycieczka: wycieczka,
             })

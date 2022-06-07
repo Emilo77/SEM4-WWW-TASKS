@@ -15,4 +15,8 @@ router.get('/', (req, res) => {
         });
 })
 
+router.get('/:n', (req, res) => {
+    res.render('404');
+});
+
 module.exports = router;
