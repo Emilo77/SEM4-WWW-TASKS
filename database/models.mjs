@@ -36,14 +36,20 @@ const Wycieczka = models.define('Wycieczka', {
         }
     },
     data_poczatku: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
     },
     data_konca: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
-            // isAfter: new Date(this.data_poczatku).toDateString(),
+            validate_date(value) {
+                if (value < this.data_poczatku) {
+                    console.log(value);
+                    console.log(this.data_poczatku);
+                    throw new Error('Data końca wycieczki musi być późniejsza niż data początku');
+                }
+            }
         }
     },
     liczba_dostepnych_miejsc: {
@@ -88,6 +94,7 @@ const Zgloszenie = models.define('Zgloszenie', {
 
 // Zadanie 3
 // Tu dodaj kod odpowiedzialny za utworzenie relacji pomiędzy modelami db.Wycieczka i db.Zgloszenie
+
 
 Zgloszenie.belongsTo(Wycieczka, {
     foreignKey: 'wycieczka_id',

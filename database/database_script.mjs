@@ -39,7 +39,7 @@ async function init_database() {
         obrazek: 'morza.jpg',
         cena: 17,
         data_poczatku: '2022-10-01',
-        data_konca: '2022-08-05',
+        data_konca: '2023-08-05',
         liczba_dostepnych_miejsc: 23,
         promocja: 25,
         opis: 'Basowy huk fal, stada rozkrzyczanych mew szybujących nad wypływającym w morze statkiem, ' +
@@ -120,10 +120,6 @@ async function get_trip(number) {
         return project;
     }
 }
-
-
-
-
 
 module.exports = {init_database, get_future_trips, get_trip};
 

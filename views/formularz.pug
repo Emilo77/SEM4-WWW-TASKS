@@ -2,7 +2,7 @@ doctype html
 head
     meta(charset='UTF-8')
     title Formularz rezerwacji
-    link(rel='stylesheet' href='/../public/styles/formularz.css')
+    link(rel='stylesheet' href='/../public/styles/formularz/formularz.css')
     script(src='/../form.js' defer='')
 
 include common/navbar.pug
@@ -10,23 +10,21 @@ include common/navbar.pug
 .form_and_array
     .form
         h1 Zarezerwuj wycieczkę
-        form#form(action='/formularz/', method='POST')
+        form#form(action='/formularz/' + wycieczka.id + '/success/', method='POST')
             br
             .form_title
                 label(for='imie') Imię:
-                input#imie(type='text' placeholder='Podaj imię')
-                #name-error
+                input#imie(type='text' name='imie' placeholder='Podaj imię')
             .form_title
                 label(for='nazwisko') Nazwisko:
-                input#nazwisko(type='text' placeholder='Podaj nazwisko')
-                #surname-error
+                input#nazwisko(type='text' name='nazwisko' placeholder='Podaj nazwisko' )
             .form_title
                 label(for='email') Adres email:
-                input#email(type='email' placeholder='Podaj adres email')
+                input#email(type='email' name='email' placeholder='Podaj adres email')
             .form_title
-                label(for='numer') Liczba zgłoszeń:
-                output 0
-                input#numer(type='range' min='0' max=wycieczka.liczba_dostepnych_miejsc value='0' step='1' oninput='this.previousElementSibling.value = this.value')
+                label(for='liczba_miejsc') Liczba zgłoszeń:
+                output 1
+                input#liczba_miejsc(type='range' name='liczba_miejsc' min='1' max=wycieczka.liczba_dostepnych_miejsc value='0' step='1' oninput='this.previousElementSibling.value = this.value')
             if (wycieczka.liczba_dostepnych_miejsc > 0)
                 input#submit-button.submit-button(type='submit' value='Prześlij')
             else
