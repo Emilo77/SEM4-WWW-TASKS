@@ -5,6 +5,11 @@ async function init_database() {
 
     await database.sync({force: true});
 
+    await add_trips(Wycieczka);
+}
+
+
+async function add_trips(Wycieczka) {
     await Wycieczka.create({
         nazwa: "Wysokie góry",
         krotki_opis: "Krótka wycieczka na ten właśnie szczyt. Niezwykle  ciekawe atrakcje.",
@@ -79,20 +84,6 @@ async function init_database() {
             'Biegiem można zobaczyć dużo ale też ominąć smaczki. Dlatego wychodzimy z założenia ' +
             'lepiej mniej a dobrze. Chociaż nam udało się w trakcie weekendu zobaczyć całkiem sporo.'
     });
-
-    await Zgloszenie.create({
-        imie: 'Jan',
-        nazwisko: 'Kowalski',
-        email: 'essa@gmail.com',
-        liczba_miejsc: 2,
-    });
-
-    await Zgloszenie.create({
-        imie: 'Adam',
-        nazwisko: 'Nowak',
-        email: 'essa2@gmail.com',
-        liczba_miejsc: 3,
-    });
 }
 
 function get_future_trips() {
@@ -124,11 +115,11 @@ async function get_trip(number) {
 async function change_tickets(trip_id, number_of_tickets) {
     const trip = await get_trip(trip_id);
     if (trip === undefined) {
-        throw new Error('Trip not found');
+        throw new Error('Nie odnaleziono wycieczki!');
     }
 
     if (trip.liczba_dostepnych_miejsc - number_of_tickets < 0) {
-        throw new Error('Not enough tickets');
+        throw new Error('Brak biletów! Odśwież stronę.');
     } else {
         trip.liczba_dostepnych_miejsc -= number_of_tickets;
         await trip.save();

@@ -10,17 +10,17 @@ include ../common/navbar
 .form_and_array
     .form
         h1 Zarezerwuj wycieczkę
-        form#form(action='/formularz/' + wycieczka.id + '/success/', method='POST')
+        form#form(action='/formularz/' + wycieczka.id, method='POST')
             br
             .form_title
                 label(for='imie') Imię:
-                input#imie(type='text' name='imie' placeholder='Podaj imię')
+                input#imie(type='text' name='imie' placeholder='Podaj imię' maxlength='40' required='')
             .form_title
                 label(for='nazwisko') Nazwisko:
-                input#nazwisko(type='text' name='nazwisko' placeholder='Podaj nazwisko' )
+                input#nazwisko(type='text' name='nazwisko' placeholder='Podaj nazwisko' maxlength='40' required='')
             .form_title
                 label(for='email') Adres email:
-                input#email(type='email' name='email' placeholder='Podaj adres email')
+                input#email(type='email' name='email' placeholder='Podaj adres email' maxlength='100' required='')
             .form_title
                 label(for='liczba_miejsc') Liczba zgłoszeń:
                 output 1
@@ -30,26 +30,34 @@ include ../common/navbar
             else
                 p.submit-button.error_message_hidden Przykro nam, wszystkie miejsca na wycieczkę zostały już zarezerwowane.
                 p.submit-button(type='submit' value='Prześlij' disabled='')
-    .table
-        h2 #{wycieczka.nazwa}
-        table.tg
-            thead
-                tr
-                    th.tg-0lax
-                        b Start
-                    th.tg-0lax
-                        b Koniec
-                    th.tg-0lax
-                        b Cena za osobę
-                    th.tg-0lax
-                        b Dostępne miejsca
 
-            tbody
-                tr
-                    td.tg-0lax=new Date(wycieczka.data_poczatku).toLocaleDateString()
-                    td.tg-0lax=new Date(wycieczka.data_konca).toLocaleDateString()
-                    td.tg-0lax=wycieczka.cena
-                    td.tg-0lax=wycieczka.liczba_dostepnych_miejsc
+    .table_container
+        if (error_msg)
+            .table_red
+                h2 #{error_msg}
+        else if (message)
+            .table_green
+                h2 #{message}
+        .table
+            h2 #{wycieczka.nazwa}
+            table.tg
+                thead
+                    tr
+                        th.tg-0lax
+                            b Start
+                        th.tg-0lax
+                            b Koniec
+                        th.tg-0lax
+                            b Cena za osobę
+                        th.tg-0lax
+                            b Dostępne miejsca
+
+                tbody
+                    tr
+                        td.tg-0lax=new Date(wycieczka.data_poczatku).toLocaleDateString()
+                        td.tg-0lax=new Date(wycieczka.data_konca).toLocaleDateString()
+                        td.tg-0lax=wycieczka.cena
+                        td.tg-0lax=wycieczka.liczba_dostepnych_miejsc
 
 #modal.modal
     .modal-content
